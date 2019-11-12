@@ -122,7 +122,7 @@ IB_DESIGNABLE
 - (void)endUpdates;
 
 // Scroll to page
-- (void)scrollToIndex:(NSInteger)index animated:(BOOL)animated;
+- (void)scrollToItemAtIndex:(NSInteger)index animated:(BOOL)animated;
 // Returns the visible cell object at the specified index
 - (__kindof ZKCycleScrollViewCell * _Nullable)cellForItemAtIndex:(NSInteger)index;
 

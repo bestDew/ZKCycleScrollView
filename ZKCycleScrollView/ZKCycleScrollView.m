@@ -170,7 +170,7 @@
     }];
 }
 
-- (void)scrollToIndex:(NSInteger)index animated:(BOOL)animated {
+- (void)scrollToItemAtIndex:(NSInteger)index animated:(BOOL)animated {
     NSInteger numberOfAddedCells = [self numberOfAddedCells];
     if (index < 0 || index > _numberOfItems - numberOfAddedCells - 1) {
         NSLog(@"⚠️attempt to scroll to invalid index:%zd", index);
@@ -179,7 +179,7 @@
     [self removeTimer];
     index += numberOfAddedCells / 2;
     UICollectionViewScrollPosition position = [self scrollPosition];
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
+    NSIndexPath *indexPath = [NSIndexPath indexPathForItem:index inSection:0];
     [_collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:position animated:animated];
     [self addTimer];
 }
@@ -190,7 +190,7 @@
         return nil;
     }
     index += numberOfAddedCells / 2;
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
+    NSIndexPath *indexPath = [NSIndexPath indexPathForItem:index inSection:0];
     ZKCycleScrollViewCell *cell = [_collectionView cellForItemAtIndexPath:indexPath];
     
     return cell;
@@ -203,7 +203,7 @@
 
 - (void)endUpdates {
     [_flowLayout invalidateLayout];
-    [self scrollToIndex:_tempIndex animated:NO];
+    [self scrollToItemAtIndex:_tempIndex animated:NO];
     [self addTimer];
 }
 
